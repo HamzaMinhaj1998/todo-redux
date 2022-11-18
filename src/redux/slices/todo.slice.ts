@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type state = {
   title: string[];
-  deleted: boolean[];
+  deleted: string[];
 };
 
 const initialState: state = {
   title: [],
-  deleted: [false],
+  deleted: [''],
 };
 
 export const todoSlice = createSlice({
@@ -22,9 +22,9 @@ export const todoSlice = createSlice({
     },
     setTodoDeleted: (
       state: typeof initialState,
-      action: PayloadAction<boolean>
+      action: PayloadAction<string>
     ) => {
-      state.deleted = [...state.deleted, action.payload];
+      state.title = state.title.filter(itm => itm !== action.payload)
     },
   },
 });

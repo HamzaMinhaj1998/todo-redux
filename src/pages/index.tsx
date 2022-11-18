@@ -15,14 +15,16 @@ const Page = () => {
 
  }
 
- const deletedTitle = () => {
-  dispatch(setTodoDeleted(true))
- }
-
+ const deletedTitle = (item:string) => {
+  dispatch(setTodoDeleted(item))
+}
+const editButton = (item: string)=>{
+   
+}
 
   return (
     <>
-      <div className="App  bg-[tomato] w-full h-screen flex flex-col justify-center ">
+      <div className="App bg-[rgba(0,0,0,0.4)] w-full h-screen flex flex-col justify-center ">
         <div className="header flex justify-center items-center w-full">
           <div className="flex flex-col">
           <input type="text" placeholder="Task..." value={myvalue} onChange={(e)=>{
@@ -35,7 +37,7 @@ const Page = () => {
         <div className="todoList flex flex-col items-center my-4">
           <div className="w-64">
             {title.map((item,index)=>
-              <li key={index}  className='flex justify-between mb-3'><span>{index + 1}: {item}</span> <div> <button className="bg-white rounded-md font-medium text-sm p-1 w-14">Edited</button> <button onClick={deletedTitle} className="bg-white rounded-md text-sm p-1 w-14 font-medium">Delete</button> </div> </li>
+              <li key={index}  className='flex justify-between mb-3'><span>{index + 1}: {item}</span> <div> <button className="bg-white rounded-md font-medium text-sm p-1 w-14" onClick={()=>{editButton(item)}} >Edit</button> <button onClick={()=>deletedTitle(item)} className="bg-white rounded-md text-sm p-1 w-14 font-medium">Delete</button> </div> </li>
             )}
           </div>
         </div>
